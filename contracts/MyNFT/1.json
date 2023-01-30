@@ -1,0 +1,16 @@
+{
+  "description": "Cool NFTs collection",
+  "external_url": "https://mynfts.com",
+  "image": "https://ipfs.filebase.io/ipfs/QmaatRYPRBjuF7vWkWNvcBy8N5b85asTREKpoeoFwFKiXp",
+  "name": "My NFT 1",
+  "attributes": [
+    {
+      "trait_type": "Is cool",
+      "value": "Yes"
+    },
+    {
+      "trait_type": "Standard",
+      "value": "ERC721"
+    }
+  ]
+}

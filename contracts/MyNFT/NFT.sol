@@ -10,6 +10,8 @@ import "@openzeppelin/contracts@4.8.1/utils/Counters.sol";
 contract MyNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
 
+    mapping(address => uint256) public nftsCount;
+
     Counters.Counter private _tokenIdCounter;
     uint256 MAX_SUPPLY = 1000;
     uint256 LIMIT_PER_USER = 3;
@@ -19,9 +21,11 @@ contract MyNFT is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     function safeMint(address to, string memory uri) public {
         uint256 tokenId = _tokenIdCounter.current();
         require(tokenId <= MAX_SUPPLY, 'All NFTs have been minted');
+        require(nftsCount[to] < 3, 'Limit is ${LIMIT_PER_USER} NFT');
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
+        nftsCount[to] += 1;
     }
 
     // The following functions are overrides required by Solidity.
